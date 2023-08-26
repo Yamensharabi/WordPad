@@ -1,26 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import 'my_icon.dart';
+
 class MyAppBar extends StatelessWidget {
+  final String title;
+  final IconData icon;
   const MyAppBar({
-    super.key,
-  });
+    Key? key,
+    required this.title,
+    required this.icon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text(
-          "WordPad",
-          style: TextStyle(fontSize: 26),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 26),
         ),
         const Spacer(),
-        Container(
-            height: 45,
-            width: 45,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.05),
-                borderRadius: BorderRadius.circular(16)),
-            child: const Center(child: Icon(Icons.search)))
+        MyIcon(icon: icon)
       ],
     );
   }
